@@ -1,0 +1,43 @@
+Work4students
+
+Student dzienny jest dostepny w okreslonych godzinach
+
+Dopasowanie dostepnosci studenta do godzin pracodawcy
+
+Pracodawca:
+	musi sie rejestrowac
+	Moze dodac oferte do konkretnego stanowiska
+	Musi okreslic jakie godziny go interesuja
+		Moze cala dobe
+		Dokladnosc do dnia tygodnia
+		np W pon od godz. do  godz.
+		Wycinki czasu od ... do ... 1dzien 2 dzien
+
+student
+	zaklada konto
+	Moze wybrac oferte
+	Podaje swoja dostepnosc jakie godziny
+	Moze tez podac zainteresowania stanowiska
+
+Algorytm dopasowania godzin i zainteresowac
+
+Okresl procentowo stopnienc dopasowania godzin
+
+jesli z 24 godzin pasuje 12 godzin to 50% zgodnosci
+
+Przechodzi do oferty przez wyszukiwanie i bez wyszukiwania
+
+Stident moze zaakceptowac oferte
+
+Pracodawca ma info ze tacy studenci sie zglosili
+
+Polaczyc ich jakas relacja
+
+Chat: nie
+Mail ale poza systemem
+Dane kontaktowe
+
+Student ocenia pracodawce
+0 do 5 *
+Ocena wyswietlana jako usredniona przy danej ofercie
+

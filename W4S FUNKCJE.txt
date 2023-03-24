@@ -1,0 +1,17 @@
+1. Rejestracja użytkowników - strona umożliwia rejestrację dla dwóch rodzajów użytkowników: studentów i pracodawców. Podczas rejestracji użytkownicy muszą podać swoje dane, w tym region zamieszkania, adres firmy oraz preferowane godziny pracy.
+
+2. Katalog stanowisk pracy - strona udostępnia katalog stanowisk pracy dla studentów. Pracodawcy mogą dodać swoje oferty pracy do katalogu, które są następnie wyświetlane studentom. Katalog zawiera szczegóły dotyczące stanowiska, takie jak wymagania, godziny pracy, wynagrodzenie i lokalizacja.
+
+3. Wprowadzenie oferty - pracodawcy mogą dodawać swoje oferty pracy do katalogu. Oferty zawierają szczegółowe informacje o stanowisku, takie jak wymagania, godziny pracy, wynagrodzenie i lokalizacja.
+
+4. Podgląd ofert - studenci mogą przeglądać oferty pracy umieszczone w katalogu, aby znaleźć odpowiednie stanowisko dla siebie.
+
+5. Wyszukiwanie - strona umożliwia studentom przeszukiwanie katalogu ofert pracy zgodnie z ich preferencjami. Mogą przeglądać oferty według lokalizacji, godzin pracy, wymagań i innych kryteriów. Student otrzymuje wynik procentowo która oferta najbardziej pasuje do jego preferencji.
+
+6. Kandydowanie - studenci mogą składać swoje aplikacje na stanowiska, które ich interesują. Po złożeniu aplikacji, pracodawcy otrzymują powiadomienie i mogą przeglądać aplikacje.
+
+7. Wybór studenta przez pracodawcę - pracodawcy mogą wybierać spośród aplikacji, które otrzymują od studentów, i kontaktować się z wybranymi kandydatami.
+
+8. Ocena studenta przez pracodawcę - po zatrudnieniu studenta pracodawcy mogą oceniać jego pracę na stronie. To umożliwia innym pracodawcom zobaczenie opinii o danym studencie i pomaga studentom zdobyć lepszą pracę w przyszłości.
+
+9. Ocena pracodawcy przez studenta - strona umożliwia także studentom ocenianie pracodawców. To pozwala innym studentom zobaczyć opinie o pracodawcach i pomaga im podjąć decyzję o podjęciu pracy.

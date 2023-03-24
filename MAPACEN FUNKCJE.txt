@@ -1,0 +1,24 @@
+ZAD. 2. MAPACEN
+1.Konta użytkowników - serwis umożliwia rejestrację i logowanie użytkowników. Rejestracja jest konieczna aby zobaczyć ceny na stronie. Posiadanie konta jest wymagane do publikacji wpisów. Logowanie będzie dostępne poprzez stronę logowania, jeśli użytkownik nie posiada konta - przycisk do rejestracji wraz z benefitami jakie się otrzymuje poprzez posiadanie konta.
+
+2. Wybór regionu - użytkownicy mogą wybrać swój region, aby uzyskać informacje o cenach w swoim obszarze geograficznym. Pierwszy wybór regionu jest wymagany podczas rejestracji.
+
+3. Prezentacja wyników - po wybraniu regionu, strona wyświetla ceny podstawowych artykułów spożywczych, chemicznych i innych dostępnych w danym regionie. Wyniki są wyświetlane domyślnie dla danego regionu użytkownika. Ceny są uśredniane w skali miesiąca.
+
+4. Stały koszyk produktów - zamknięty koszyk z propozycją najpopularniejszych produktów wraz z ich cenami. Uprawnienia do edycji posiada jedynie administrator.
+
+5. Wyszukiwanie wpisów - użytkownicy mogą wyszukiwać ceny konkretnych produktów w danym regionie. Wyszukiwanie jest możliwe za pomocą kryterii, np. wyszukiwanie wszystkich postów związanych ze sklepem Lidl.
+
+6. Umieszczenie wpisu - użytkownicy mają możliwość umieszczenia nowego wpisu z ceną produktu, którego nie ma jeszcze na liście. Do publikacji wpisu wymagane jest potwierdzenie w postaci paragonu, aby zapobiec szerzenie się nieprawdziwych informacji.
+
+7. Dodanie komentarza/potwierdzenie informacji - użytkownicy mogą komentować posty innych użytkowników.
+
+8. Wprowadzanie sklepu i lokalizacji - użytkownicy mogą wprowadzać informacje o sklepach i ich lokalizacjach, co ułatwia innym użytkownikom znalezienie potrzebnych produktów w okolicy.
+
+9. Wprowadzanie ceny - użytkownicy mogą wprowadzać informacje o cenach produktów w różnych sklepach i w różnych regionach.
+
+10. Wizualizacja wyników - strona umożliwia wizualizację wyników w postaci przypięcia pinezki danego sklepu na mapach internetowych.
+
+11. Benefity dla aktywnych użytkowników - użytkownicy aktywni zostają nagrodzeni wszelkiego rodzaju benefitami ustalonymi przez administratorów.
+
+

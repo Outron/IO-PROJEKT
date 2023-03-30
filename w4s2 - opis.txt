@@ -16,4 +16,4 @@ Pracodawca przegląda oferty studentów i dokonuje wyboru. Po dokonaniu wyboru, 
 
 Ostatnim krokiem jest wprowadzenie oceny pracodawcy przez studenta. Student może wprowadzić do systemu ocenę pracodawcy, wykorzystując system gwiazdek od 1 do 5 oraz dodając komentarz.
 
-W systemie będą przechowywane dane takie jak: dane użytkowników, słownik stanowisk pracy, oferty pracy, godziny dostępności oraz oceny pracodawców. Wszystkie dane będą przechowywane w bazie danych.
+W systemie będą przechowywane dane takie jak: dane użytkowników, słownik stanowisk pracy, oferty pracy, godziny dostępności oraz oceny pracodawców. Wszystkie dane będą przechowywane w bazie danych..

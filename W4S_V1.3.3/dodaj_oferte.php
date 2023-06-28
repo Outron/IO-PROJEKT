@@ -102,17 +102,59 @@ function skomponuj_godziny(elm) {
 			dyspozycyjnosc.value = "Caly tydzien," + g_od + "-" + g_do;
 		}
 	} else {
-		var pon_od = dysp_pon_od.value;
-		var pon_do = dysp_pon_do.value;
-		var niedz_od = dysp_niedz_od.value;
-		var niedz_do = dysp_niedz_do.value;
+		var buf = "";
 
-		if (
+		buf += "Poniedziałek,";
+		if (!dysp_pon_czy_wolne.checked) {
+			buf += dysp_pon_od.value + "-" + dysp_pon_do.value;
+		} else { buf += "wolne"; }
+		buf += ";";
+
+		buf += "Wtorek,";
+		if (!dysp_wto_czy_wolne.checked) {
+			buf += dysp_wto_od.value + "-" + dysp_wto_do.value;
+		}
+		buf += ";";
+
+		buf += "Środa,";
+		if (!dysp_sro_czy_wolne.checked) {
+			buf += dysp_sro_od.value + "-" + dysp_sro_do.value;
+		}
+		buf += ";";
+
+		buf += "Czwartek,";
+		if (!dysp_czw_czy_wolne.checked) {
+			buf += dysp_czw_od.value + "-" + dysp_czw_do.value;
+		}
+		buf += ";";
+
+		buf += "Piątek,";
+		if (!dysp_pt_czy_wolne.checked) {
+			buf += dysp_pt_od.value + "-" + dysp_pt_do.value;
+		}
+		buf += ";";
+
+		buf += "Sobota,";
+		if (!dysp_sob_czy_wolne.checked) {
+			buf += dysp_sob_od.value + "-" + dysp_sob_do.value;
+		}
+		buf += ";";
+
+		buf += "Niedziela,";
+		if (!dysp_niedz_czy_wolne.checked) {
+			buf += dysp_niedz_od.value + "-" + dysp_niedz_do.value;
+		}
+		// buf += ";";
+
+		console.log(buf);
+		dyspozycyjnosc.value = buf;
+
+		/* if (
 			(pon_od.length > 0) && (pon_do.length > 0) &&
 			(niedz_od.length > 0) && (niedz_do.length > 0)
 		) {
 			dyspozycyjnosc.value = "Poniedzialek," + pon_od + "-" + pon_do + ";Niedziela," + niedz_od + "-" + niedz_do;
-		}
+		} */
 	}
 
 	console.log(dyspozycyjnosc.value);
@@ -129,48 +171,56 @@ function skomponuj_godziny(elm) {
 				<th>Dzien tygodnia</th>
 				<th>Od godziny</th>
 				<th>do godziny</th>
+				<th>czy wolne?</th>
 			</tr>
 
 			<tr>
 				<td>Poniedzialek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_od" required="" ></td>
-	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_do" required="" ></td>
+6	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_pon_czy_wolne" ></td>
 			</tr>
 
 			<tr>
 				<td>Wtorek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_wto_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_wto_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_wto_czy_wolne" ></td>
 			</tr>
 
 			<tr>
 				<td>Sroda</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sro_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sro_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_sro_czy_wolne" ></td>
 			</tr>
 
 			<tr>
 				<td>Czwartek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_czw_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_czw_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_czw_czy_wolne" ></td>
 			</tr>
 
 			<tr>
 				<td>Piatek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pt_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pt_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_pt_czy_wolne" ></td>
 			</tr>
 
 			<tr>
 				<td>Sobota</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sob_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sob_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_sob_czy_wolne" ></td>
 			</tr>
 
 			<tr>
 				<td>Niedziela</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_niedz_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_niedz_do" required="" ></td>
+			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_niedz_czy_wolne" ></td>
 			</tr>
 		</table>
 </div>

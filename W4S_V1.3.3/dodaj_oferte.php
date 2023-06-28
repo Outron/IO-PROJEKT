@@ -113,37 +113,37 @@ function skomponuj_godziny(elm) {
 		buf += "Wtorek,";
 		if (!dysp_wto_czy_wolne.checked) {
 			buf += dysp_wto_od.value + "-" + dysp_wto_do.value;
-		}
+		} else { buf += "wolne"; }
 		buf += ";";
 
 		buf += "Środa,";
 		if (!dysp_sro_czy_wolne.checked) {
 			buf += dysp_sro_od.value + "-" + dysp_sro_do.value;
-		}
+		} else { buf += "wolne"; }
 		buf += ";";
 
 		buf += "Czwartek,";
 		if (!dysp_czw_czy_wolne.checked) {
 			buf += dysp_czw_od.value + "-" + dysp_czw_do.value;
-		}
+		} else { buf += "wolne"; }
 		buf += ";";
 
 		buf += "Piątek,";
 		if (!dysp_pt_czy_wolne.checked) {
 			buf += dysp_pt_od.value + "-" + dysp_pt_do.value;
-		}
+		} else { buf += "wolne"; }
 		buf += ";";
 
 		buf += "Sobota,";
 		if (!dysp_sob_czy_wolne.checked) {
 			buf += dysp_sob_od.value + "-" + dysp_sob_do.value;
-		}
+		} else { buf += "wolne"; }
 		buf += ";";
 
 		buf += "Niedziela,";
 		if (!dysp_niedz_czy_wolne.checked) {
 			buf += dysp_niedz_od.value + "-" + dysp_niedz_do.value;
-		}
+		} else { buf += "wolne"; }
 		// buf += ";";
 
 		console.log(buf);

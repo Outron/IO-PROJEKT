@@ -49,6 +49,22 @@ function dost_render(elm) {
 
 			dysp_caly_tydz_od.setAttribute("required", "");
 			dysp_caly_tydz_do.setAttribute("required", "");
+
+			dysp_pon_od.removeAttribute("required", "");
+			dysp_pon_do.removeAttribute("required", "");
+			dysp_wto_od.removeAttribute("required", "");
+			dysp_wto_do.removeAttribute("required", "");
+			dysp_sro_od.removeAttribute("required", "");
+			dysp_sro_do.removeAttribute("required", "");
+			dysp_czw_od.removeAttribute("required", "");
+			dysp_czw_do.removeAttribute("required", "");
+			dysp_pt_od.removeAttribute("required", "");
+			dysp_pt_do.removeAttribute("required", "");
+			dysp_sob_od.removeAttribute("required", "");
+			dysp_sob_do.removeAttribute("required", "");
+			dysp_niedz_od.removeAttribute("required", "");
+			dysp_niedz_do.removeAttribute("required", "");
+
 			break;
 
 		case "nie":
@@ -57,11 +73,25 @@ function dost_render(elm) {
 
 			dysp_caly_tydz_od.removeAttribute("required", "");
 			dysp_caly_tydz_do.removeAttribute("required", "");
+
+			dysp_pon_od.setAttribute("required", "");
+			dysp_pon_do.setAttribute("required", "");
+			dysp_wto_od.setAttribute("required", "");
+			dysp_wto_do.setAttribute("required", "");
+			dysp_sro_od.setAttribute("required", "");
+			dysp_sro_do.setAttribute("required", "");
+			dysp_czw_od.setAttribute("required", "");
+			dysp_czw_do.setAttribute("required", "");
+			dysp_pt_od.setAttribute("required", "");
+			dysp_pt_do.setAttribute("required", "");
+			dysp_sob_od.setAttribute("required", "");
+			dysp_sob_do.setAttribute("required", "");
+			dysp_niedz_od.setAttribute("required", "");
+			dysp_niedz_do.setAttribute("required", "");
+
 			break;
 	}
 }
-
-function dost_caly_tydz(g_od, g_do) { }
 
 function skomponuj_godziny(elm) {
 	if (dost_radio_caly_tydz.checked) {
@@ -70,6 +100,18 @@ function skomponuj_godziny(elm) {
 
 		if ((g_od.length > 0) && (g_do.length > 0)) {
 			dyspozycyjnosc.value = "Caly tydzien," + g_od + "-" + g_do;
+		}
+	} else {
+		var pon_od = dysp_pon_od.value;
+		var pon_do = dysp_pon_do.value;
+		var niedz_od = dysp_niedz_od.value;
+		var niedz_do = dysp_niedz_do.value;
+
+		if (
+			(pon_od.length > 0) && (pon_do.length > 0) &&
+			(niedz_od.length > 0) && (niedz_do.length > 0)
+		) {
+			dyspozycyjnosc.value = "Poniedzialek," + pon_od + "-" + pon_do + ";Niedziela," + niedz_od + "-" + niedz_do;
 		}
 	}
 
@@ -81,7 +123,58 @@ function skomponuj_godziny(elm) {
         <input type="hidden" id="dyspozycyjnosc" name="dyspozycyjnosc" required>
 	<input type="radio" name="dyspozycyjnosc_caly_tydzien" value="nie" onclick="dost_render(this)" checked="" >rozne godziny na kazdy dzien</input>
 	<input type="radio" id="dost_radio_caly_tydz" name="dyspozycyjnosc_caly_tydzien" value="tak" onclick="dost_render(this)" >caly tydzien</input>
-	<div id="formatka_dostepnosc_dni_tyg" ></div>
+	<div id="formatka_dostepnosc_dni_tyg" >
+		<table>
+			<tr>
+				<th>Dzien tygodnia</th>
+				<th>Od godziny</th>
+				<th>do godziny</th>
+			</tr>
+
+			<tr>
+				<td>Poniedzialek</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_do" required="" ></td>
+			</tr>
+
+			<tr>
+				<td>Wtorek</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_wto_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_wto_do" required="" ></td>
+			</tr>
+
+			<tr>
+				<td>Sroda</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sro_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sro_do" required="" ></td>
+			</tr>
+
+			<tr>
+				<td>Czwartek</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_czw_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_czw_do" required="" ></td>
+			</tr>
+
+			<tr>
+				<td>Piatek</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pt_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pt_do" required="" ></td>
+			</tr>
+
+			<tr>
+				<td>Sobota</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sob_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sob_do" required="" ></td>
+			</tr>
+
+			<tr>
+				<td>Niedziela</td>
+			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_niedz_od" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_niedz_do" required="" ></td>
+			</tr>
+		</table>
+</div>
+
 	<div id="formatka_dostepnosc_caly_tyg" style="display:none" >
 <style>
 table, th, td {

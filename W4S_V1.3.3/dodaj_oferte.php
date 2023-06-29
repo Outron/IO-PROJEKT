@@ -177,7 +177,7 @@ function skomponuj_godziny(elm) {
 			<tr>
 				<td>Poniedzialek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_od" required="" ></td>
-6	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_do" required="" ></td>
+	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_do" required="" ></td>
 			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_pon_czy_wolne" ></td>
 			</tr>
 

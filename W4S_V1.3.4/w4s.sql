@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.7.6
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Cze 28, 2023 at 02:16 AM
--- Wersja serwera: 10.4.28-MariaDB
--- Wersja PHP: 8.2.4
+-- Host: localhost
+-- Czas generowania: 30 Cze 2023, 16:26
+-- Wersja serwera: 5.7.33-0ubuntu0.16.04.1
+-- Wersja PHP: 7.0.33-0ubuntu0.16.04.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `w4s`
+-- Baza danych: `w4s`
 --
 
 -- --------------------------------------------------------
@@ -33,10 +34,10 @@ CREATE TABLE `aplikacje` (
   `id_oferta` int(11) DEFAULT NULL,
   `kwalifikacje` text NOT NULL,
   `checi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `aplikacje`
+-- Zrzut danych tabeli `aplikacje`
 --
 
 INSERT INTO `aplikacje` (`id_aplikacji`, `id_user`, `id_oferta`, `kwalifikacje`, `checi`) VALUES
@@ -57,6 +58,24 @@ INSERT INTO `aplikacje` (`id_aplikacji`, `id_user`, `id_oferta`, `kwalifikacje`,
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `godziny_dostepnosci`
+--
+
+CREATE TABLE `godziny_dostepnosci` (
+  `id_prac` int(11) NOT NULL,
+  `godziny_dostepnosci` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `godziny_dostepnosci`
+--
+
+INSERT INTO `godziny_dostepnosci` (`id_prac`, `godziny_dostepnosci`) VALUES
+(11, '');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `oferty`
 --
 
@@ -68,10 +87,10 @@ CREATE TABLE `oferty` (
   `dyspozycyjnosc` text NOT NULL,
   `tresc` text NOT NULL,
   `wymagania` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `oferty`
+-- Zrzut danych tabeli `oferty`
 --
 
 INSERT INTO `oferty` (`id`, `tytul_oferty`, `autor`, `data`, `dyspozycyjnosc`, `tresc`, `wymagania`) VALUES
@@ -98,10 +117,10 @@ CREATE TABLE `pracodawcy` (
   `REGON` int(9) NOT NULL,
   `adres` varchar(255) NOT NULL,
   `nazwa_firmy` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pracodawcy`
+-- Zrzut danych tabeli `pracodawcy`
 --
 
 INSERT INTO `pracodawcy` (`id`, `login`, `haslo`, `imie`, `nazwisko`, `email`, `nrtel`, `NIP`, `REGON`, `adres`, `nazwa_firmy`) VALUES
@@ -124,10 +143,10 @@ CREATE TABLE `pracownicy` (
   `nazwisko` varchar(50) NOT NULL,
   `email` varchar(62) NOT NULL,
   `nrtel` int(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pracownicy`
+-- Zrzut danych tabeli `pracownicy`
 --
 
 INSERT INTO `pracownicy` (`id`, `user`, `haslo`, `imie`, `nazwisko`, `email`, `nrtel`) VALUES
@@ -156,6 +175,12 @@ ALTER TABLE `aplikacje`
   ADD PRIMARY KEY (`id_aplikacji`);
 
 --
+-- Indeksy dla tabeli `godziny_dostepnosci`
+--
+ALTER TABLE `godziny_dostepnosci`
+  ADD UNIQUE KEY `id_prac` (`id_prac`);
+
+--
 -- Indeksy dla tabeli `oferty`
 --
 ALTER TABLE `oferty`
@@ -178,25 +203,25 @@ ALTER TABLE `pracownicy`
 --
 
 --
--- AUTO_INCREMENT for table `aplikacje`
+-- AUTO_INCREMENT dla tabeli `aplikacje`
 --
 ALTER TABLE `aplikacje`
   MODIFY `id_aplikacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `oferty`
+-- AUTO_INCREMENT dla tabeli `oferty`
 --
 ALTER TABLE `oferty`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `pracodawcy`
+-- AUTO_INCREMENT dla tabeli `pracodawcy`
 --
 ALTER TABLE `pracodawcy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `pracownicy`
+-- AUTO_INCREMENT dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;

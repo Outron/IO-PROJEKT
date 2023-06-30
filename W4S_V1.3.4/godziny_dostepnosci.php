@@ -9,7 +9,6 @@ if ($_SESSION['user']) {
 
 
 	if (isset($_POST["dyspozycyjnosc"])) {
-		echo "insert jeszcze";
 		$godz_dost = $_POST["dyspozycyjnosc"];
 
 		// do zmiany, kolumna w  tabeli pracowqnicy
@@ -27,12 +26,15 @@ if ($_SESSION['user']) {
 */
 
                 if (mysqli_query($conn, $sql)) {
-                    echo "Godziny dostepnosci zostały zaktualizowane pomyślnie.";
+                    echo "<b>Godziny dostepnosci zostały zaktualizowane pomyślnie.</b><br><br>";
+
                 } else {
-                    echo "Błąd podczas godzin dostepnosci: " . mysqli_error($conn);
+                    echo "<b>Błąd podczas godzin dostepnosci: " . mysqli_error($conn) . "</b><br><br>";
                 }
 	}
 
+	// Zeby nie dublowac komunikatow
+	$flaga_brak_godz_dost = 0;
 
         $sql = "SELECT godziny_dostepnosci
                 FROM godziny_dostepnosci
@@ -43,19 +45,19 @@ if ($_SESSION['user']) {
             $row = mysqli_fetch_assoc($result);
             $godziny = $row["godziny_dostepnosci"];
 
-            if ($godziny == "") echo "<b>Jeszcze nie wprowadziłeś swoich godzin dostepnosci!</b><br>";
+            if ($godziny == "") $flaga_brak_godz_dost = 1;
         } else {
-            echo "<b>Nie wprowadziłeś swoich godzin dostepnosci!</b><br>";
+		$flaga_brak_godz_dost = 1;
 
                 $sql = "INSERT INTO godziny_dostepnosci(id_prac, godziny_dostepnosci)
                         VALUES($student_id, '')";
 
-                if (mysqli_query($conn, $sql)) {
-                    echo "Godziny dostepnosci zostały zainicjowane pomyślnie.";
-                } else {
-                    echo "Błąd podczas inicjalizacji godzin dostepnosci: " . mysqli_error($conn);
+                if (!mysqli_query($conn, $sql)) {
+                    echo "<b>Błąd podczas inicjalizacji godzin dostepnosci: " . mysqli_error($conn) . "</b><br><br>";
                 }
         }
+
+	if ($flaga_brak_godz_dost == 1) echo "<b>Jeszcze nie wprowadziłeś swoich godzin dostepnosci!</b><br><br>";
     }
 }
 ?>

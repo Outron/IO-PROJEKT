@@ -47,8 +47,7 @@ session_start();
 					echo "<h3>" . $wiersz["tytul_oferty"] . "</h3><br>";
                     echo "Pracodawca: <i>" . $wiersz["autor"] . "</i><br>";
                     echo "Data zamieszczenia oferty: " . $wiersz["data"] . "<br>";
-                    echo "Dyspozycyjność: ";
-					echo "<br>";
+                    echo "Dyspozycyjność:<br>";
                     if ($wiersz["dyspozycyjnosc"] != "") {
                         echo "<table style='border: 1px solid black'>";
                         foreach (explode(";", $wiersz["dyspozycyjnosc"]) as $pierwszy_poziom) {
@@ -58,14 +57,17 @@ session_start();
                             }
                             echo "</tr>";
                         }
-                        echo "</table><br>";
-                        echo "<div class='offer-desc'>";
-                        echo "Wymagania: " . $wiersz["wymagania"] . "<br><br>";
+                        echo "</table>";
                     } else {
                         echo "brak danych";
                     }
+                    echo "<br>";
+
+                    echo "<div class='offer-desc'>";
+                    echo "Wymagania: " . $wiersz["wymagania"] . "<br><br>";
+
                     echo $wiersz["tresc"];
-					echo "</div>";
+                    echo "</div>";
 
                     echo "<div class='offer-button'>";
                     if (@$_SESSION['user']) {

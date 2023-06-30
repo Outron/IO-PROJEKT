@@ -788,3 +788,20 @@ button#zamknijBtn {
   background-color: #333;
   color:#fff
 }
+.check-type{
+  display: flex;
+  margin:15px 17px 15px 15px;
+  transform: scale(1.03);
+}
+
+input#dost_radio_caly_tydz {
+  margin-left: 60px;
+  margin-right: 15px;
+}
+
+input[type="radio"] {
+  margin-left: 3px;
+  margin-right: 15px;
+}
+
+

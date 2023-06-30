@@ -54,6 +54,8 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 			($_student[$i] == $_oferta[$i]) // pelne dopasowanie godzin
 			||
 			($_student[$i] == "wolne") && ($_oferta[$i] != "wolne") // student wolny
+			||
+			($_oferta[$i] == "wolne") // FIXUP - tego było trzeba, tego brakowało
 		) {
 			$wynik += 1/7;
 		} else {

@@ -125,7 +125,7 @@ if ($godziny != "") {
 function dost_render(elm) {
 	switch (elm.value) {
 		case "tak":
-			formatka_dostepnosc_dni_tyg.style.display = "none";
+			formatka_dostepnosc_dni_tyg_2.style.display = "none";
 			formatka_dostepnosc_caly_tyg.style.display = "block";
 
 			dysp_caly_tydz_od.setAttribute("required", "");
@@ -149,7 +149,7 @@ function dost_render(elm) {
 			break;
 
 		case "nie":
-			formatka_dostepnosc_dni_tyg.style.display = "block";
+			formatka_dostepnosc_dni_tyg_2.style.display = "block";
 			formatka_dostepnosc_caly_tyg.style.display = "none";
 
 			dysp_caly_tydz_od.removeAttribute("required", "");

@@ -46,6 +46,15 @@ if ($_SESSION['user']) {
             if ($godziny == "") echo "<b>Jeszcze nie wprowadziłeś swoich godzin dostepnosci!</b><br>";
         } else {
             echo "<b>Nie wprowadziłeś swoich godzin dostepnosci!</b><br>";
+
+                $sql = "INSERT INTO godziny_dostepnosci(id_prac, godziny_dostepnosci)
+                        VALUES($student_id, '')";
+
+                if (mysqli_query($conn, $sql)) {
+                    echo "Godziny dostepnosci zostały zainicjowane pomyślnie.";
+                } else {
+                    echo "Błąd podczas inicjalizacji godzin dostepnosci: " . mysqli_error($conn);
+                }
         }
     }
 }

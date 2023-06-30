@@ -40,10 +40,11 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 
 	$wynik = 0;
 
-	if (sizeof($_student) != sizeof($_oferta)) {
+	if (sizeof($_student) == sizeof($_oferta)) {
 		debug_echo("rozmiary ok");
 	} else {
 		debug_echo("<h1>BLAD NIE TE SAME ILOSCI DNI</h1>");
+		debug_echo(sizeof($_student). " != " . sizeof($_oferta));
 	}
 
 	for ($i = 1; $i < sizeof($_student); $i += 2) {

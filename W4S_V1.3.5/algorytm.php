@@ -1,6 +1,10 @@
 <?php
 // Funkcja dopasowania godzin studenta do oferty
-function algo_dopasowania_godzin($student, $oferta) {
+function algo_dopasowania_godzin($str_student, $str_oferta) {
+	// Konwertuj z typu string
+	$student = explode(";", $str_student);
+	$oferta = explode(";", $str_oferta);
+
 	// Rozbij na listę, żeby był dostęp do elementów
 	$_student = [];
 	foreach ($student as $dzien) $_student = array_merge($_student, explode(",", $dzien));
@@ -9,25 +13,25 @@ function algo_dopasowania_godzin($student, $oferta) {
 	foreach ($oferta as $dzien) $_oferta = array_merge($_oferta, explode(",", $dzien));
 
 	if (sizeof($_oferta) == 2) {
-		echo "Oferta: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
+		//echo "Oferta: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
 
 		$_oferta = array_merge($_oferta, $_oferta, $_oferta, $_oferta, $_oferta, $_oferta, $_oferta);
 	} else {
-		echo "Oferta: dni osobno - OK\n";
+		//echo "Oferta: dni osobno - OK\n";
 	}
 
 	if (sizeof($_student) == 2) {
-		echo "Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n\n";
+		// echo "Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n\n";
 
 		$_student = array_merge($_student, $_student, $_student, $_student, $_student, $_student, $_student);
 	} else {
-		echo "Student: dni osobno - OK\n\n";
+		// echo "Student: dni osobno - OK\n\n";
 	}
 
 	$wynik = 0;
 
 	for ($i = 1; $i < sizeof($_student); $i += 2) {
-		echo $_student[$i] . " " . $_oferta[$i] . "\n";
+		// echo $_student[$i] . " " . $_oferta[$i] . "\n";
 
 		if (
 			($_student[$i] == $_oferta[$i]) // pelne dopasowanie godzin
@@ -58,14 +62,14 @@ function algo_dopasowania_godzin($student, $oferta) {
 				$wynik += 1/7;
 			}
 
-			echo "$stud - $off => $dopasowanie\n";
+			// echo "$stud - $off => $dopasowanie\n";
 		}
 
-                echo "wynik czastkowy: $wynik";
+                // echo "wynik czastkowy: $wynik";
 
-		echo "\n\n";
+		// echo "\n\n";
 	}
-	echo "\n";
+	// echo "\n";
 
 	return $wynik*100;
 }

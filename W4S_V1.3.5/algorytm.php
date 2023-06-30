@@ -30,6 +30,10 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 
 	$wynik = 0;
 
+	if (sizeof($_student) != sizeof($_oferta)) {
+		echo "<h1>BLAD NIE TE SAME ILOSCI DNI</h1>";
+	}
+
 	for ($i = 1; $i < sizeof($_student); $i += 2) {
 		// echo $_student[$i] . " " . $_oferta[$i] . "\n";
 

@@ -14,8 +14,7 @@ session_start();
 
 <main id="test">
     <section class="hero-offers" style="height: 200px">
-        <br><br><a>Work for Students</a><br><h1>Jakiej pracy dziś szukasz?</h1> 
-        
+        <br><br><a>Work for Students</a><br><h1>Jakiej pracy dziś szukasz?</h1>
     </section>
 
     <section class="offer-container">
@@ -62,13 +61,14 @@ if (@$_SESSION['typ_uzytkownika'] == "student") {
                 while ($wiersz = mysqli_fetch_assoc($ret)) {
                     echo "<div class='offer'>";
                     echo "<a href='oferta.php?id=" . $wiersz["id"] . "'><h3>" . $wiersz["tytul_oferty"] . "</h3></a><br>";
-                    echo "<p>Zamieścił <i>" . $wiersz["autor"] . "</i> w dniu " . $wiersz["data"] . "<br>";
-                    echo "Dopasowanie: ";
+                    echo "<p>Zamieścił <i>" . $wiersz["autor"] . "</i> w dniu " . $wiersz["data"];
 
 		if (@$_SESSION['typ_uzytkownika'] == "student") {
+                    echo "<br>Dopasowanie: ";
 			// echo $godziny_dost_stud ."  <br>      ". $wiersz["dyspozycyjnosc"];
 
 			if ($godziny_dost_stud != "") {
+				// TODO: kolorowanie
 				echo round(algo_dopasowania_godzin($godziny_dost_stud, $wiersz["dyspozycyjnosc"]), 2) . " %";
 			} else {
 				echo "<b>ustaw swoje godziny dostępności, aby zobaczyć dopasowanie</b>";

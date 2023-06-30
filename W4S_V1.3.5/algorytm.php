@@ -4,12 +4,7 @@
 	// Docelowo wykonywanie w oferty.php
 	// Pokazywanie w liscie ofert przy danej ofercie jako duzym drukiem procent
 
-	// Pobierz dostepnosc z bazy dla studenta i z oferty pracy konkretnej
-	//$student = explode(";", "Cały tydzień,08:00-16:00");
-	$student = explode(";", "pn,08:00-16:00;wt,08:00-16:00;sr,08:00-16:00;cz,08:00-16:00;pt,08:00-16:00;sb,wolne;nd,wolne");
-	// $oferta = explode(";", "Cały tydzień,08:00-15:01");
-	$oferta = explode(";", "Cały tydzień,08:00-16:00;Cały tydzień,08:00-16:00;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01");
-
+function algo_dopasowania_godzin($student, $oferta) {
 	// Rozbij na listę, żeby był dostęp do elementów
 	$_student = [];
 	foreach ($student as $dzien) $_student = array_merge($_student, explode(",", $dzien));
@@ -19,14 +14,18 @@
 
 	if (sizeof($_oferta) == 2) {
 		echo "Oferta: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
+
+		$_oferta = array_merge($_oferta, $_oferta, $_oferta, $_oferta, $_oferta, $_oferta, $_oferta);
 	} else {
 		echo "Oferta: dni osobno - OK\n";
 	}
 
 	if (sizeof($_student) == 2) {
-		echo "Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
+		echo "Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n\n";
+
+		$_student = array_merge($_student, $_student, $_student, $_student, $_student, $_student, $_student);
 	} else {
-		echo "Student: dni osobno - OK\n";
+		echo "Student: dni osobno - OK\n\n";
 	}
 
 	$wynik = 0;
@@ -39,15 +38,29 @@
 			||
 			($_student[$i] == "wolne") && ($_oferta[$i] != "wolne") // student wolny
 		) {
-			$wynik += 1;
+			$wynik += 1/7;
 		} else {}
 
                 echo "wynik czastkowy: $wynik";
 
-		echo "\n";
+		echo "\n\n";
 	}
-	echo "\nwynik = ". $wynik*100 ." %    --------------------------------------------------";
-	exit();
+	echo "\n";
+
+	return $wynik*100;
+}
+
+
+// Pobierz dostepnosc z bazy dla studenta i z oferty pracy konkretnej
+$g_student = explode(";", "Cały tydzień,08:00-16:00");
+//$g_student = explode(";", "pn,08:00-16:00;wt,08:00-16:00;sr,08:00-16:00;cz,08:00-16:00;pt,08:00-16:00;sb,wolne;nd,wolne");
+$g_oferta = explode(";", "Cały tydzień,08:00-16:00");
+//$g_oferta = explode(";", "Cały tydzień,08:00-16:00;Cały tydzień,08:00-16:00;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01");
+$algowynik = algo_dopasowania_godzin($g_student, $g_oferta);
+
+echo "Dopasowanie: ". $algowynik ." %";
+
+exit();
 
 
 

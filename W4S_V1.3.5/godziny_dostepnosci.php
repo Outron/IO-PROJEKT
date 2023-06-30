@@ -110,7 +110,6 @@ if ($godziny != "") {
 
 
 
-Wprowadź lub edytuj swoje godziny dostępności:
 <form method="POST" >
 <!-- <input type="text" name="dyspozycyjnosc" value="<?php echo $godziny; ?>" > -->
 
@@ -239,21 +238,22 @@ function skomponuj_godziny(elm) {
 }
 </script>
 
-        <label for="dyspozycyjnosc">Dyspozycyjność:</label><br>
+	Wprowadź lub edytuj swoje godziny dostępności:<br>
+        <!-- <label for="dyspozycyjnosc">Dyspozycyjność:</label><br> -->
         <input type="hidden" id="dyspozycyjnosc" name="dyspozycyjnosc" required>
-	<input type="radio" name="dyspozycyjnosc_caly_tydzien" value="nie" onclick="dost_render(this)" checked="" >rozne godziny na kazdy dzien</input>
-	<input type="radio" id="dost_radio_caly_tydz" name="dyspozycyjnosc_caly_tydzien" value="tak" onclick="dost_render(this)" >caly tydzien</input>
+	<input type="radio" name="dyspozycyjnosc_caly_tydzien" value="nie" onclick="dost_render(this)" checked="" >różne godziny na każdy dzień</input>
+	<input type="radio" id="dost_radio_caly_tydz" name="dyspozycyjnosc_caly_tydzien" value="tak" onclick="dost_render(this)" >cały tydzień</input>
 	<div id="formatka_dostepnosc_dni_tyg" >
 		<table>
 			<tr>
-				<th>Dzien tygodnia</th>
+				<th>Dzień tygodnia</th>
 				<th>Od godziny</th>
 				<th>do godziny</th>
 				<th>czy wolne?</th>
 			</tr>
 
 			<tr>
-				<td>Poniedzialek</td>
+				<td>Poniedziałek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pon_do" required="" ></td>
 			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_pon_czy_wolne" ></td>
@@ -267,7 +267,7 @@ function skomponuj_godziny(elm) {
 			</tr>
 
 			<tr>
-				<td>Sroda</td>
+				<td>Środa</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sro_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_sro_do" required="" ></td>
 			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_sro_czy_wolne" ></td>
@@ -281,7 +281,7 @@ function skomponuj_godziny(elm) {
 			</tr>
 
 			<tr>
-				<td>Piatek</td>
+				<td>Piątek</td>
 			        <td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pt_od" required="" ></td>
 	        		<td><input type="time" oninput="skomponuj_godziny(this)" id="dysp_pt_do" required="" ></td>
 			        <td><input type="checkbox" oninput="skomponuj_godziny(this)" id="dysp_pt_czy_wolne" ></td>
@@ -336,5 +336,5 @@ table, th, td {
 
 
 
-<input type="submit" >
+<input type="submit" value="Aktualizuj" >
 </form>

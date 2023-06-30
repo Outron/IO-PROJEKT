@@ -69,6 +69,68 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 			$wynik += 1;
 			debug_echo("Pasuje");
 		} else {
+			$stud_od_do = explode("-", str_replace(":", "", $_student[$i]));
+			$stud_od = intval($stud_od_do[0]);
+			$stud_do = intval($stud_od_do[1]);
+
+			$off_od_do = explode("-", str_replace(":", "", $_oferta[$i]));
+			$off_od = intval($off_od_do[0]);
+			$off_do = intval($off_od_do[1]);
+
+			$godziny_od = $stud_od - $off_od;
+			$godziny_do = $stud_do - $off_do;
+
+			if ($godziny_od <= 0) {
+				// Student ma więcej czasu albo godzina pasuje idealnie
+				$wynik += 1/2;
+			}
+
+			if ($godziny_do >= 0) {
+				// Student ma więcej czasu albo godzina pasuje idealnie
+				$wynik += 1/2;
+			}
+
+			/* Test szaroskrzynkowy - znam/widze kod, ale nie wiem jak dziala
+
+			// student od 10-20
+			// praca od 12-14
+			// czyli pasuje fajnie
+
+			std_od=10   -    of_od=12        = -2
+			std_do=20   -    of_do=14        = +6
+
+			czyli jak od ujemne i do dodatnie to pasuje i dajemy 100%
+
+
+			// student od 10-15
+			// praca od 12-16
+
+			10-12 = -2 OK
+			15-16 = -1 NIE OK
+
+			jak OD na minusie to super
+			jak 0 to jest ideolo
+			jak tylko wieksze od zera to juz zle
+
+			*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// TEN ALGORYTM JEDNAK NIE BARDZO Z TEGO ELSE'A
 			// trzeba patrzec czy godziny rozp. i zakoncz. sie w miare zazebiaja
 			// np.
@@ -82,15 +144,29 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 
 			// Przyda sie
 
-			$stud_od_do = explode("-", str_replace(":", "", $_student[$i]));
-			$stud_od = intval($stud_od_do[0]);
-			$stud_do = intval($stud_od_do[1]);
-			$stud = $stud_do - $stud_od;
 
-			$off_od_do = explode("-", str_replace(":", "", $_oferta[$i]));
-			$off_od = intval($off_od_do[0]);
-			$off_do = intval($off_od_do[1]);
-			$off = $off_do - $off_od;
+			/*
+			debug_echo($stud_od);
+			debug_echo($stud_do);
+			debug_echo($stud);
+
+			debug_echo($off_od);
+			debug_echo($off_do);
+			debug_echo($off); */
+
+
+
+			/*
+			$dopasuj_godziny_od = $stud_od - $off_od;
+			$dopasuj_godziny_do = $stud_do - $off_do;
+
+			debug_echo($dopasuj_godziny_od);
+			debug_echo($dopasuj_godziny_do);
+			*/
+
+			// $wynik += (1/$dopasuj_godziny_od)+(1/$dopasuj_godziny_od);
+			//debug_echo();
+
 
 			// $dopasowanie = $stud - $off;
 

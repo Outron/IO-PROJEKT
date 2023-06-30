@@ -1,6 +1,16 @@
 <?php
+function debug_echo($msg) {
+	$DEBUG = 1;
+
+	if ($DEBUG) echo '<script>console.log(atob("' . base64_encode("[DEBUG] " . $msg)  . '"));</script>';
+}
+
 // Funkcja dopasowania godzin studenta do oferty
 function algo_dopasowania_godzin($str_student, $str_oferta) {
+	debug_echo("Algorytm dopasowania");
+	debug_echo($str_student);
+	debug_echo($str_oferta);
+
 	// Konwertuj z typu string
 	$student = explode(";", $str_student);
 	$oferta = explode(";", $str_oferta);
@@ -13,29 +23,31 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 	foreach ($oferta as $dzien) $_oferta = array_merge($_oferta, explode(",", $dzien));
 
 	if (sizeof($_oferta) == 2) {
-		//echo "Oferta: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
+		debug_echo("Oferta: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n");
 
 		$_oferta = array_merge($_oferta, $_oferta, $_oferta, $_oferta, $_oferta, $_oferta, $_oferta);
 	} else {
-		//echo "Oferta: dni osobno - OK\n";
+		debug_echo("Oferta: dni osobno - OK\n");
 	}
 
 	if (sizeof($_student) == 2) {
-		// echo "Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n\n";
+		debug_echo("Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n\n");
 
 		$_student = array_merge($_student, $_student, $_student, $_student, $_student, $_student, $_student);
 	} else {
-		// echo "Student: dni osobno - OK\n\n";
+		debug_echo("Student: dni osobno - OK\n\n");
 	}
 
 	$wynik = 0;
 
 	if (sizeof($_student) != sizeof($_oferta)) {
-		echo "<h1>BLAD NIE TE SAME ILOSCI DNI</h1>";
+		debug_echo("rozmiary ok");
+	} else {
+		debug_echo("<h1>BLAD NIE TE SAME ILOSCI DNI</h1>");
 	}
 
 	for ($i = 1; $i < sizeof($_student); $i += 2) {
-		// echo $_student[$i] . " " . $_oferta[$i] . "\n";
+		debug_echo($_student[$i] . " " . $_oferta[$i] . "\n");
 
 		if (
 			($_student[$i] == $_oferta[$i]) // pelne dopasowanie godzin
@@ -66,14 +78,14 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 				$wynik += 1/7;
 			}
 
-			// echo "$stud - $off => $dopasowanie\n";
+			debug_echo("$stud - $off => $dopasowanie\n");
 		}
 
-                // echo "wynik czastkowy: $wynik";
+                debug_echo("wynik czastkowy: $wynik");
 
-		// echo "\n\n";
+		debug_echo("\n\n");
 	}
-	// echo "\n";
+	debug_echo("");
 
 	return $wynik*100;
 }
@@ -86,7 +98,7 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 //$g_oferta = explode(";", "Cały tydzień,00:00-16:00;Cały tydzień,03:00-16:00;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,wolne;Cały tydzień,wolne");
 //$algowynik = algo_dopasowania_godzin($g_student, $g_oferta);
 
-//echo "Dopasowanie: ". $algowynik ." %";
+// echo "Dopasowanie: ". $algowynik ." %";
 ?>
 
 

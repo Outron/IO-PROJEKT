@@ -47,18 +47,41 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 		debug_echo(sizeof($_student). " != " . sizeof($_oferta));
 	}
 
+	$PRESCALER = 0;
+	// echo ($PRESCALER ? $PRESCALER : 1);
+
 	for ($i = 1; $i < sizeof($_student); $i += 2) {
 		debug_echo($_student[$i] . " " . $_oferta[$i] . "\n");
 
+		// Jeśli w ofercie wolne, to nie liczymy tego dnia
+		if ($_oferta[$i] != "wolne") $PRESCALER += 1;
+
 		if (
-			($_student[$i] == $_oferta[$i]) // pelne dopasowanie godzin
-			||
-			($_student[$i] == "wolne") && ($_oferta[$i] != "wolne") // student wolny
-			||
-			($_oferta[$i] == "wolne") // FIXUP - tego było trzeba, tego brakowało
+			($_oferta[$i] == "wolne") // Dzień wolny w ofercie, nie liczymy jako dzień pracy
 		) {
-			$wynik += 1/7;
+			$wynik += 0; // Bez zmian
+			debug_echo("Dzień wolny");
+		} elseif (
+			($_student[$i] == $_oferta[$i]) // Pełne dopasowanie godzin
+			||
+			($_student[$i] == "wolne") && ($_oferta[$i] != "wolne") // Student wolny
+		) {
+			$wynik += 1;
+			debug_echo("Pasuje");
 		} else {
+			// TEN ALGORYTM JEDNAK NIE BARDZO Z TEGO ELSE'A
+			// trzeba patrzec czy godziny rozp. i zakoncz. sie w miare zazebiaja
+			// np.
+			/*
+			+1h       60%
+			+0.5h     80%
+			0h        100%
+			-0.5h     80%
+			-1h       60%
+			*/
+
+			// Przyda sie
+
 			$stud_od_do = explode("-", str_replace(":", "", $_student[$i]));
 			$stud_od = intval($stud_od_do[0]);
 			$stud_do = intval($stud_od_do[1]);
@@ -69,8 +92,9 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 			$off_do = intval($off_od_do[1]);
 			$off = $off_do - $off_od;
 
-			$dopasowanie = $stud - $off;
+			// $dopasowanie = $stud - $off;
 
+			/*
 			if ($dopasowanie < 0) {
 				// Oferta wymaga wiecej godzin niz ma student
 				// Jakis wspolczynnik obrazujacy niedopasowanie
@@ -80,17 +104,21 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 				// czyli OK
 				$wynik += 1/7;
 			}
+			*/
 
-			debug_echo("$stud - $off => $dopasowanie\n");
+			// debug_echo("$stud - $off => $dopasowanie\n");
 		}
 
                 debug_echo("wynik czastkowy: $wynik");
 
 		debug_echo("\n\n");
 	}
+
+	$wynik_koncowy = $wynik / $PRESCALER;
+	debug_echo($wynik . "/" . $PRESCALER . "=" . $wynik_koncowy);
 	debug_echo("");
 
-	return $wynik*100;
+	return $wynik_koncowy*100;
 }
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 30 Cze 2023, 23:21
+-- Czas generowania: 30 Cze 2023, 23:24
 -- Wersja serwera: 5.7.33-0ubuntu0.16.04.1
 -- Wersja PHP: 7.0.33-0ubuntu0.16.04.16
 
@@ -98,8 +98,7 @@ INSERT INTO `oferty` (`id`, `tytul_oferty`, `autor`, `data`, `dyspozycyjnosc`, `
 (1, 'Kurier InPost', 'dominIT', '2023-06-15 21:39:25', 'Cały tydzien,18:00-06:00', 'Zatrudnię do pomocy w rozwożeniu paczek w godzinach nocnych, darmowa kawa, nadgodziny dodatkowo płatne', 'Prawo jazdy kat. B'),
 (2, 'Pomocnik woznego/konserwatora POLECAM', 'formula1', '2023-06-15 21:39:25', 'poniedziałek,08:00-10:00;wtorek,08:00-10:00;sroda,08:00-10:00;czwartek,08:00-10:00;piątek,08:00-10:00;sobota,wolne;niedziela,wolne', 'zatrudnie kogoś na stanowisko pomoc woźnego/konserwatora do SP nr 1, dyspozycyjnosc w godz 8-10', '2 sprawne ręce'),
 (3, 'Operator koparki spalinowej', 'koparka', '2023-06-20 13:29:51', 'Cały tydzien,06:00-12:00', 'Witam, szukam operatora koparki, który będzie kopał rów wzdłuż nowo powstałej drogi krajowej.', 'Sumienność i staranność w koszeniu trawy.'),
-(4, 'Full Stack Developer', 'dominIT', '2023-06-27 21:34:45', 'Cały tydzień, 9:00-17:00', 'Witam, szukam Full Stack Developera.\r\nDobrze płatne.', 'Znajomość HTML 5 + CSS, JavaScript, PHP, React, SQL oraz Python.\r\nMile widziane wykształcenie wyższe.'),
-(8, 'niepasujaca', 'formula1', '2023-06-30 21:48:17', 'PoniedziaÅ‚ek,00:00-00:30;Wtorek,00:30-00:30;Åšroda,00:00-03:00;Czwartek,00:00-05:05;PiÄ…tek,00:11-11:01;Sobota,wolne;Niedziela,wolne', 'oferta', 'pracy');
+(4, 'Full Stack Developer', 'dominIT', '2023-06-27 21:34:45', 'Cały tydzień, 9:00-17:00', 'Witam, szukam Full Stack Developera.\r\nDobrze płatne.', 'Znajomość HTML 5 + CSS, JavaScript, PHP, React, SQL oraz Python.\r\nMile widziane wykształcenie wyższe.');
 
 -- --------------------------------------------------------
 

@@ -88,14 +88,18 @@ if ($_SESSION['user']) {
 
 <?php
 if ($godziny != "") {
-	echo "Twoje obecne prefenencje dostępnosci:<br>";
+	echo "<h1>Twoje obecne prefenencje dostępnosci:</h1><br>";
 	echo "<table style='border: 1px solid black'>";
 
 	foreach (explode(";", $godziny) as $pierwszy_poziom) {
 		echo "<tr>";
 
 		foreach (explode(",", $pierwszy_poziom) as $drugi_poziom) {
-			echo "<td style='border: 1px solid black'>" . $drugi_poziom . "</td>";
+			echo "<td style='border: 1px solid black;
+			width:70px;
+			height:20px;
+			transform: scale(1);
+			padding:7px;'>" . $drugi_poziom . "</td>";
 		}
 
 		echo "</tr>";
@@ -238,12 +242,14 @@ function skomponuj_godziny(elm) {
 }
 </script>
 
-	Wprowadź lub edytuj swoje godziny dostępności:<br>
+	<h1>Wprowadź lub edytuj swoje godziny dostępności:<br></h1>
         <!-- <label for="dyspozycyjnosc">Dyspozycyjność:</label><br> -->
+		<div class='check-type'>
         <input type="hidden" id="dyspozycyjnosc" name="dyspozycyjnosc" required>
 	<input type="radio" name="dyspozycyjnosc_caly_tydzien" value="nie" onclick="dost_render(this)" checked="" >różne godziny na każdy dzień</input>
 	<input type="radio" id="dost_radio_caly_tydz" name="dyspozycyjnosc_caly_tydzien" value="tak" onclick="dost_render(this)" >cały tydzień</input>
-	<div id="formatka_dostepnosc_dni_tyg" >
+</div>
+	<div id="formatka_dostepnosc_dni_tyg_2" >
 		<table>
 			<tr>
 				<th>Dzień tygodnia</th>
@@ -303,12 +309,56 @@ function skomponuj_godziny(elm) {
 		</table>
 </div>
 
-	<div id="formatka_dostepnosc_caly_tyg" style="display:none" >
+	<div id="formatka_dostepnosc_caly_tyg" style="display:none;" >
 <style>
 table, th, td {
 	border: 1px black solid;
 	border-collapse: collapse;
+	padding:7px;
 }
+input#dysp_pon_czy_wolne {
+    width: 22px;
+    margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+input#dysp_wto_czy_wolne {
+    width: 22px;
+    margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+input#dysp_sro_czy_wolne {
+	width: 22px;
+    margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+input#dysp_czw_czy_wolne {
+	width: 22px;
+    margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+input#dysp_pt_czy_wolne {
+	width: 22px;
+	margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+input#dysp_sob_czy_wolne {
+	width: 22px;
+    margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+input#dysp_niedz_czy_wolne {
+	width: 22px;
+    margin-left:22px;
+	margin-top:3px;
+    height: 22px;
+}
+
 
 </style>
 
@@ -335,6 +385,12 @@ table, th, td {
 
 
 
-
+<br><br>
 <input type="submit" value="Aktualizuj" >
 </form>
+</main>
+<footer>
+    <p>w4s.com &copy; 2023</p>
+</footer>
+</body>
+</html>

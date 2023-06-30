@@ -1,13 +1,14 @@
-<?php
+<pre><?php
 	// Narazie suorwy skrypt do ogarniecia tego algorytmu jak to ma dzialac
 
 	// Docelowo wykonywanie w oferty.php
 	// Pokazywanie w liscie ofert przy danej ofercie jako duzym drukiem procent
 
 	// Pobierz dostepnosc z bazy dla studenta i z oferty pracy konkretnej
-	$student = explode(";", "Cały tydzień,08:00-16:00");
-	$oferta = explode(";", "Cały tydzień,08:00-15:01");
-
+	//$student = explode(";", "Cały tydzień,08:00-16:00");
+	$student = explode(";", "pn,08:00-16:00;wt,08:00-16:00;sr,08:00-16:00;cz,08:00-16:00;pt,08:00-16:00;sb,wolne;nd,wolne");
+	// $oferta = explode(";", "Cały tydzień,08:00-15:01");
+	$oferta = explode(";", "Cały tydzień,08:00-16:00;Cały tydzień,08:00-16:00;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01");
 
 	// Rozbij na listę, żeby był dostęp do elementów
 	$_student = [];
@@ -15,6 +16,53 @@
 
 	$_oferta = [];
 	foreach ($oferta as $dzien) $_oferta = array_merge($_oferta, explode(",", $dzien));
+
+	if (sizeof($_oferta) == 2) {
+		echo "Oferta: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
+	} else {
+		echo "Oferta: dni osobno - OK\n";
+	}
+
+	if (sizeof($_student) == 2) {
+		echo "Student: caly tydzien - TODO: interpolacja tabeli zeby sie 7 razy powtarzalo\n";
+	} else {
+		echo "Student: dni osobno - OK\n";
+	}
+
+	$wynik = 0;
+
+	for ($i = 1; $i < sizeof($_student); $i += 2) {
+		echo $_student[$i] . " " . $_oferta[$i] . "\n";
+
+		if (
+			($_student[$i] == $_oferta[$i]) // pelne dopasowanie godzin
+			||
+			($_student[$i] == "wolne") && ($_oferta[$i] != "wolne") // student wolny
+		) {
+			$wynik += 1;
+		} else {}
+
+                echo "wynik czastkowy: $wynik";
+
+		echo "\n";
+	}
+	echo "\nwynik = ". $wynik*100 ." %    --------------------------------------------------";
+	exit();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	var_dump($_student);
@@ -66,3 +114,4 @@
 	echo "<br><br>Wynik porownania: " . round($wynik*100, 2) . " %";
 ?>
 
+</pre>

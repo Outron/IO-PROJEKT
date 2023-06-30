@@ -7,6 +7,10 @@ function debug_echo($msg) {
 
 // Funkcja dopasowania godzin studenta do oferty
 function algo_dopasowania_godzin($str_student, $str_oferta) {
+	$PROG_ODCHYLKI_MINUTOWEJ = 30;
+	$WSPOLCZYNNIK_TOLERANCJI_MINUTOWEJ = 15;
+	$WSPOLCZYNNIK_REDUKCJI_POZA_ZAKRESEM = 0.875;
+
 	debug_echo("Algorytm dopasowania");
 	debug_echo($str_student);
 	debug_echo($str_oferta);
@@ -87,9 +91,9 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 				$wynik += 1/2;
 				$od_ok = 1;
 			} else {
-				if ($godziny_od <= 30) {
+				if ($godziny_od <= $PROG_ODCHYLKI_MINUTOWEJ) {
 					// Do pół godziny różnicy
-					$wynik += min(1/2, 12/abs($godziny_od));
+					$wynik += min(1/2, $WSPOLCZYNNIK_TOLERANCJI_MINUTOWEJ/abs($godziny_od));
 					$od_ok = 1;
 				} else $wynik += 0;
 			}
@@ -99,16 +103,16 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 				$wynik += 1/2;
 				$do_ok = 1;
 			} else {
-				if ($godziny_od >= -30) {
+				if ($godziny_od >= -$PROG_ODCHYLKI_MINUTOWEJ) {
 					// Do pół godziny różnicy
-					$wynik += min(1/2, 12/abs($godziny_do));
+					$wynik += min(1/2, $WSPOLCZYNNIK_TOLERANCJI_MINUTOWEJ/abs($godziny_do));
 					$do_ok = 1;
 				} else $wynik += 0;
 			}
 
 			if (!(($od_ok == 1) && ($do_ok == 1))) {
 				// Zredukuj procent dostępności, jeśli oba zakresy nie pasują naraz
-				$wynik = $wynik * 0.85;
+				$wynik = $wynik * $WSPOLCZYNNIK_REDUKCJI_POZA_ZAKRESEM;
 			}
 		}
 

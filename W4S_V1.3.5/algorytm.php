@@ -43,12 +43,11 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 	if (sizeof($_student) == sizeof($_oferta)) {
 		debug_echo("rozmiary ok");
 	} else {
-		debug_echo("<h1>BLAD NIE TE SAME ILOSCI DNI</h1>");
+		debug_echo("BLAD NIE TE SAME ILOSCI DNI");
 		debug_echo(sizeof($_student). " != " . sizeof($_oferta));
 	}
 
 	$PRESCALER = 0;
-	// echo ($PRESCALER ? $PRESCALER : 1);
 
 	for ($i = 1; $i < sizeof($_student); $i += 2) {
 		debug_echo($_student[$i] . " " . $_oferta[$i] . "\n");
@@ -80,15 +79,73 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 			$godziny_od = $stud_od - $off_od;
 			$godziny_do = $stud_do - $off_do;
 
+			$od_ok = 0;
+			$do_ok = 0;
+
 			if ($godziny_od <= 0) {
 				// Student ma więcej czasu albo godzina pasuje idealnie
 				$wynik += 1/2;
+				$od_ok = 1;
+			} else {
+				if ($godziny_od <= 30) {
+					// Do pół godziny różnicy
+					$wynik += min(1/2, 12/abs($godziny_od));
+					$od_ok = 1;
+				} else $wynik += 0;
 			}
 
 			if ($godziny_do >= 0) {
 				// Student ma więcej czasu albo godzina pasuje idealnie
 				$wynik += 1/2;
+				$do_ok = 1;
+			} else {
+				if ($godziny_od >= -30) {
+					// Do pół godziny różnicy
+					$wynik += min(1/2, 12/abs($godziny_do));
+					$do_ok = 1;
+				} else $wynik += 0;
 			}
+
+			if (!(($od_ok == 1) && ($do_ok == 1))) {
+				// Zredukuj procent dostępności, jeśli oba zakresy nie pasują naraz
+				$wynik = $wynik * 0.85;
+			}
+		}
+
+                debug_echo("wynik czastkowy: $wynik");
+
+		debug_echo("\n\n");
+	}
+
+	$PRESCALER_SAFE = ($PRESCALER ? $PRESCALER : 1);
+	$wynik_koncowy = $wynik / $PRESCALER_SAFE;
+	debug_echo($wynik . "/" . $PRESCALER_SAFE . "=" . $wynik_koncowy);
+	debug_echo("");
+
+	return $wynik_koncowy*100;
+}
+
+
+// Pobierz dostepnosc z bazy dla studenta i z oferty pracy konkretnej
+//$g_student = explode(";", "Cały tydzień,08:00-16:01");
+//$g_student = explode(";", "pn,08:00-16:00;wt,08:00-16:00;sr,08:00-16:00;cz,08:00-16:00;pt,08:00-16:00;sb,wolne;nd,wolne");
+//$g_oferta = explode(";", "Cały tydzień,wolne");
+//$g_oferta = explode(";", "Cały tydzień,00:00-16:00;Cały tydzień,03:00-16:00;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,wolne;Cały tydzień,wolne");
+//$algowynik = algo_dopasowania_godzin($g_student, $g_oferta);
+
+// echo "Dopasowanie: ". $algowynik ." %";
+?>
+
+
+
+
+
+
+
+
+
+<?php
+
 
 			/* Test szaroskrzynkowy - znam/widze kod, ale nie wiem jak dziala
 
@@ -113,23 +170,6 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 			jak tylko wieksze od zera to juz zle
 
 			*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			// TEN ALGORYTM JEDNAK NIE BARDZO Z TEGO ELSE'A
 			// trzeba patrzec czy godziny rozp. i zakoncz. sie w miare zazebiaja
@@ -183,40 +223,8 @@ function algo_dopasowania_godzin($str_student, $str_oferta) {
 			*/
 
 			// debug_echo("$stud - $off => $dopasowanie\n");
-		}
-
-                debug_echo("wynik czastkowy: $wynik");
-
-		debug_echo("\n\n");
-	}
-
-	$wynik_koncowy = $wynik / $PRESCALER;
-	debug_echo($wynik . "/" . $PRESCALER . "=" . $wynik_koncowy);
-	debug_echo("");
-
-	return $wynik_koncowy*100;
-}
 
 
-// Pobierz dostepnosc z bazy dla studenta i z oferty pracy konkretnej
-//$g_student = explode(";", "Cały tydzień,08:00-16:01");
-//$g_student = explode(";", "pn,08:00-16:00;wt,08:00-16:00;sr,08:00-16:00;cz,08:00-16:00;pt,08:00-16:00;sb,wolne;nd,wolne");
-//$g_oferta = explode(";", "Cały tydzień,wolne");
-//$g_oferta = explode(";", "Cały tydzień,00:00-16:00;Cały tydzień,03:00-16:00;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,08:00-15:01;Cały tydzień,wolne;Cały tydzień,wolne");
-//$algowynik = algo_dopasowania_godzin($g_student, $g_oferta);
-
-// echo "Dopasowanie: ". $algowynik ." %";
-?>
-
-
-
-
-
-
-
-
-
-<?php
 /*
 	var_dump($_student);
 	echo "<br>";

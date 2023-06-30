@@ -65,11 +65,19 @@ if (@$_SESSION['typ_uzytkownika'] == "student") {
 
 		if (@$_SESSION['typ_uzytkownika'] == "student") {
                     echo "<br>Dopasowanie: ";
-			// echo $godziny_dost_stud ."  <br>      ". $wiersz["dyspozycyjnosc"];
 
 			if ($godziny_dost_stud != "") {
-				// TODO: kolorowanie
-				echo round(algo_dopasowania_godzin($godziny_dost_stud, $wiersz["dyspozycyjnosc"]), 2) . " %";
+				$wyliczony_procent_dopasowania = round(algo_dopasowania_godzin($godziny_dost_stud, $wiersz["dyspozycyjnosc"]), 2);
+
+				if ($wyliczony_procent_dopasowania >= 60) {
+					$klasa_css_dopasowanie = "dopasowanie_git";
+				} elseif ($wyliczony_procent_dopasowania >= 40) {
+					$klasa_css_dopasowanie = "dopasowanie_jakotako";
+				} else {
+					$klasa_css_dopasowanie = "dopasowanie_niebardzo";
+				}
+
+				echo "<b><span class='$klasa_css_dopasowanie' >" . $wyliczony_procent_dopasowania . " %</span></b>";
 			} else {
 				echo "<b>ustaw swoje godziny dostępności, aby zobaczyć dopasowanie</b>";
 			}

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +42,6 @@
     <section class="offer-container">
         <h2 style='font-size: 36px;'>Zarządzaj swoimi ofertami</h2>
     <?php
-    session_start();
     if ($_SESSION['user']) {
         if ($_SESSION['typ_uzytkownika'] == "pracodawca") {
             include 'connect.php';

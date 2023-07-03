@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -10,7 +13,6 @@
         <?php include 'pasek.php'; ?>
     </header>
 <?php
-session_start();
 include 'connect.php';
 
 $conn = mysqli_connect($host, $db_user, $db_password, $db_name);

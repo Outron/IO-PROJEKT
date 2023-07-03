@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -15,7 +18,6 @@
 
 	
     <?php
-    session_start();
     if ($_SESSION['user']) {
         if ($_SESSION['typ_uzytkownika'] == "pracodawca") {
             include 'connect.php';

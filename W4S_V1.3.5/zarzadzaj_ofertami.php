@@ -18,7 +18,8 @@
     <script>
         $(document).ready(function() {
             $(".oferta").click(function() {
-                $(this).next().slideToggle();
+                //$(this).next().slideToggle();
+		location.href = "zarzadzaj_oferta.php?id=" + $(this)[0].attributes.x_idoferty.value;
             });
         });
     </script>
@@ -94,7 +95,7 @@
                     $tresc = $row['tresc'];
                     $wymagania = $row['wymagania'];
                     
-                    echo "<div class='oferta'><h3 style='font-size: 22px;'>Oferta nr: " . $id . "</h3>";
+                    echo "<div class='oferta' x_idoferty='" . $id . "' ><h3 style='font-size: 22px;'>Oferta nr: " . $id . "</h3>";
                     echo "<p>Tytuł oferty: " . $tytul_oferty . "</p></div>";
                     
                     echo "<div class='opcje-oferty'>";

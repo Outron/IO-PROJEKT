@@ -387,6 +387,108 @@ input#dysp_niedz_czy_wolne {
 
 
 
+<!-- FIXUP wolne -->
+<script>
+dysp_pon_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_pon_od.value = "00:00";
+		dysp_pon_do.value = "00:00";
+		dysp_pon_od.disabled = true;
+		dysp_pon_do.disabled = true;
+	} else {
+		dysp_pon_od.value = "";
+		dysp_pon_do.value = "";
+		dysp_pon_od.disabled = false;
+		dysp_pon_do.disabled = false;
+	}
+});
+
+dysp_wto_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_wto_od.value = "00:00";
+		dysp_wto_do.value = "00:00";
+		dysp_wto_od.disabled = true;
+		dysp_wto_do.disabled = true;
+	} else {
+		dysp_wto_od.value = "";
+		dysp_wto_do.value = "";
+		dysp_wto_od.disabled = false;
+		dysp_wto_do.disabled = false;
+	}
+});
+
+dysp_sro_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_sro_od.value = "00:00";
+		dysp_sro_do.value = "00:00";
+		dysp_sro_od.disabled = true;
+		dysp_sro_do.disabled = true;
+	} else {
+		dysp_sro_od.value = "";
+		dysp_sro_do.value = "";
+		dysp_sro_od.disabled = false;
+		dysp_sro_do.disabled = false;
+	}
+});
+
+dysp_czw_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_czw_od.value = "00:00";
+		dysp_czw_do.value = "00:00";
+		dysp_czw_od.disabled = true;
+		dysp_czw_do.disabled = true;
+	} else {
+		dysp_czw_od.value = "";
+		dysp_czw_do.value = "";
+		dysp_czw_od.disabled = false;
+		dysp_czw_do.disabled = false;
+	}
+});
+
+dysp_pt_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_pt_od.value = "00:00";
+		dysp_pt_do.value = "00:00";
+		dysp_pt_od.disabled = true;
+		dysp_pt_do.disabled = true;
+	} else {
+		dysp_pt_od.value = "";
+		dysp_pt_do.value = "";
+		dysp_pt_od.disabled = false;
+		dysp_pt_do.disabled = false;
+	}
+});
+
+dysp_sob_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_sob_od.value = "00:00";
+		dysp_sob_do.value = "00:00";
+		dysp_sob_od.disabled = true;
+		dysp_sob_do.disabled = true;
+	} else {
+		dysp_sob_od.value = "";
+		dysp_sob_do.value = "";
+		dysp_sob_od.disabled = false;
+		dysp_sob_do.disabled = false;
+	}
+});
+
+dysp_niedz_czy_wolne.addEventListener("click", function(){
+	if (this.checked) {
+		dysp_niedz_od.value = "00:00";
+		dysp_niedz_do.value = "00:00";
+		dysp_niedz_od.disabled = true;
+		dysp_niedz_do.disabled = true;
+	} else {
+		dysp_niedz_od.value = "";
+		dysp_niedz_do.value = "";
+		dysp_niedz_od.disabled = false;
+		dysp_niedz_do.disabled = false;
+	}
+});
+</script>
+<!-- FIXUP wolne -->
+
 <br><br>
 <input type="submit" value="Aktualizuj" >
 </form>

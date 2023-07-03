@@ -14,8 +14,7 @@ session_start();
 
 <main id="test">
     <section class="hero-offers" style="height: 200px">
-        <br><br><a>Work for Students</a><br><h1>Jakiej pracy dziś szukasz?</h1> 
-        
+        <br><br><a>Work for Students</a><br><h1>Jakiej pracy dziś szukasz?</h1>
     </section>
 
     <section class="offer-container">
@@ -61,8 +60,6 @@ if (@$_SESSION['typ_uzytkownika'] == "student") {
             $sql = "SELECT * FROM oferty WHERE id=" . mysqli_real_escape_string($conn, htmlentities($_GET["id"], ENT_QUOTES, "UTF-8")) . ";";
             if ($ret = mysqli_query($conn, $sql)) {
                 if ($wiersz = mysqli_fetch_assoc($ret)) {
-                    
-
                     echo "<div class='offer-info' >";
                     echo "<h3>" . $wiersz["tytul_oferty"] . "</h3><br>";
                     echo "Pracodawca: <i>" . $wiersz["autor"] . "</i><br>";
@@ -85,11 +82,7 @@ if (@$_SESSION['typ_uzytkownika'] == "student") {
                     echo "<div class='offer-desc'>";
                     echo "Wymagania: " . $wiersz["wymagania"] . "<br><br>";
 
-
-
 		if (@$_SESSION['typ_uzytkownika'] == "student") {
-                    echo "Ta oferta pasuje na <b>";
-
 			if ($godziny_dost_stud != "") {
 				$wyliczony_procent_dopasowania = round(algo_dopasowania_godzin($godziny_dost_stud, $wiersz["dyspozycyjnosc"]), 2);
 
@@ -101,14 +94,13 @@ if (@$_SESSION['typ_uzytkownika'] == "student") {
 					$klasa_css_dopasowanie = "dopasowanie_niebardzo";
 				}
 
-				echo "<span class='$klasa_css_dopasowanie' >" . $wyliczony_procent_dopasowania . " %</span>";
+                                echo "Ta oferta pasuje na <b>";
+                                echo "<span class='$klasa_css_dopasowanie' >" . $wyliczony_procent_dopasowania . " %</span>";
+                                echo "</b> do twoich godzin dostępności.<br><br>";
 			} else {
-				echo "ustaw swoje godziny dostępności, aby zobaczyć dopasowanie";
+				echo "Ustaw swoje godziny dostępności, aby zobaczyć na ile ta oferta będzie ci odpowiadać";
 			}
-                    echo "</b> do twoich godzin dostępności.<br><br>";
 		}
-
-
 
                     echo $wiersz["tresc"];
                     echo "</div>";

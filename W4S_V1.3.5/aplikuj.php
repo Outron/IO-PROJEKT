@@ -55,7 +55,7 @@ if (isset($_SESSION['user']) && $_SESSION['typ_uzytkownika'] == "student" && iss
         $result = mysqli_query($conn, $sql);
         $user = mysqli_fetch_assoc($result);
 
-        echo "<h2>Aplikuj na ofertę o ID ".$id_oferty." - ".$tytul_oferty."</h2>";
+        echo "<h2>Aplikuj na ofertę numer ".$id_oferty." - ".$tytul_oferty."</h2>";
         echo "<form method='POST' action='zapisz_aplikacje.php'>";
         echo "<input type='hidden' name='id_oferty' value='$id_oferty'>";
         echo "<input type='hidden' name='id_uzytkownika' value='$id_uzytkownika'>";

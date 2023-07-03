@@ -242,12 +242,12 @@ function skomponuj_godziny(elm) {
 }
 </script>
 
-	<h1>Wprowadź lub edytuj swoje godziny dostępności:<br></h1>
-        <!-- <label for="dyspozycyjnosc">Dyspozycyjność:</label><br> -->
+	<h1>Wprowadź lub edytuj swoje godziny dostępności:<br></h1><br>
+        <label for="dyspozycyjnosc_caly_tydzien" >Wybierz typ dyspozycyjności:</label>
 		<div class='check-type'>
         <input type="hidden" id="dyspozycyjnosc" name="dyspozycyjnosc" required>
-	<input type="radio" name="dyspozycyjnosc_caly_tydzien" value="nie" onclick="dost_render(this)" checked="" >różne godziny na każdy dzień</input>
-	<input type="radio" id="dost_radio_caly_tydz" name="dyspozycyjnosc_caly_tydzien" value="tak" onclick="dost_render(this)" >cały tydzień</input>
+	<input type="radio" name="dyspozycyjnosc_caly_tydzien" value="nie" onclick="dost_render(this)" checked="" >Dniowa</input>
+	<input type="radio" id="dost_radio_caly_tydz" name="dyspozycyjnosc_caly_tydzien" value="tak" onclick="dost_render(this)" >Tygodniowa</input>
 </div>
 	<div id="formatka_dostepnosc_dni_tyg_2" >
 		<table>

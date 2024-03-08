@@ -1,0 +1,19 @@
+W4S
+na przyszły tydzień
+
+Wstępna specyfikacja systemu (językiem normalnym bez wypunktowań i tabelek)
+opowiedzień o systemie krok po kroku jak powstają funkcje
+
+1. Co widzi niezalogowany użytkownik na stronie
+2. Rejestracja (student i pracodawca - wybór przy rejestracji) login imie nazwisko i nazwa firmy
+3. Rejestracja godzin dostępności (system ma sprawdzić godziny dostępności) GLOBALNE
+4. Lista stanowisk pracy - słownik w bazie danych i wypełnieniem zajmuje się administrator
+5. Pracodawca umieszcza ofertę - wybiera stanowisko np. sprzedawca i podaje godziny w jakich będzie możliwa praca (możliwośc wpisania godzin np 24/h)
+6. Profil pracodawcy - adres firmy, dane firmy, NIP, REGON.
+7. Student może podglądać oferty, w ofertach będzie informacja o dopasowaniu godzin. Będzie to liczone "w locie" podczas ładowania strony.
+8. Jesli studentowi oferta odpowiada to zgłasza swoją kandydature.
+9. Pracodawca przegląda oferty studentów i dokonuje wybór.
+10. Mail że student się dostał
+11. Ocena pracodawcy - student może wprowadzić do systemu ocene pracodawcy (np. gwiazdki 1-5 i komentarz)
+
+Wszystko co wyżej trzeba opisać. Zastanowić się jakie dane mają być w systemie przechowywane.

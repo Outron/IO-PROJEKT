@@ -12,3 +12,6 @@ Technology: HTML, CSS, PHP, Javascript, MySql
 -companies can add work hours for job offer       
 
 -users can see a comparison in % of their availability hours with the working hours in the job offer  
+
+## Logs
+Added docker support
